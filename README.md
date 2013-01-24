@@ -208,7 +208,7 @@ The `strategy` property can have one of the following values:
 
 Kraken API allows you to store optimized images directly in your S3 bucket or Cloud Files container. With just a few addidtional parameters your optimized images will be pushed to your external storage in no-time.
 
-### 1. Amazon S3
+### Amazon S3
 
 **Mandatory Parameters:**
 - `key` - Your unique Amazon "Access Key ID".
@@ -247,7 +247,7 @@ The `$data` array will contain `kraked_url` key pointing directly to the optimiz
 "kraked_url" => "http://s3.amazonaws.com/YOUR_CONTAINER/path/to/file.jpg"
 ````
 
-### 2. Rackspace Cloud Files
+### Rackspace Cloud Files
 
 **Mandatory Parameters:**
 - `user` - Your Rackspace username.
