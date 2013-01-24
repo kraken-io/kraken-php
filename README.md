@@ -17,7 +17,7 @@ The first option (image URL) is great for images that are already in production 
 
 Kraken gives you two options for fetching optimization results. With `wait` option the results will be returned immediately in the response. With `callback_url` the results will be posted to the URL specified in your request.
 
-### 1. Wait option
+### Wait option
 
 With the `wait` option turned on for every request to the API, the connection will be hold open unil the image has been optimized. Once this is done you will get a immediate response with a JSON object containing optimization results. To use this option simply set `"wait": true` property in your request.
 
@@ -47,7 +47,7 @@ With the `wait` option turned on for every request to the API, the connection wi
 }
 ````
 
-### 2. Callback URL
+### Callback URL
 
 With the Callback URL the HTTPS connection will be terminated immediately and a unique `id` will be returned in the response body. After the optimization is over Kraken will POST a message to the `callback_url` specified in your request. The ID in the response will reflect the ID in the results posted to your Callback URL.
 
@@ -155,7 +155,7 @@ array(6) {
 
 If you want to upload your images directly to Kraken API use the `kraken->upload()` method. You will need to provide two mandatory parameters in an array - `file` which is the absolute path to the file and `wait` or `callback_url`.
 
-In the `$data` array you will find the same optimization results as with `url` option above.
+In the `$data` array you will find the same optimization properties as with `url` option above.
 
 ````php
 <?php
