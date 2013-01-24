@@ -51,7 +51,7 @@ With the `wait` option turned on for every request to the API, the connection wi
 
 With the Callback URL the HTTPS connection will be terminated immediately and a unique `id` will be returned in the response body. After the optimization is over Kraken will POST a message to the `callback_url` specified in your request. The ID in the response will reflect the ID in the results posted to your Callback URL.
 
-We recommend [requestb.in](requestb.in) as an easy way to capture optimization results for initial testing.
+We recommend [requestb.in](http://requestb.in) as an easy way to capture optimization results for initial testing.
 
 **Request:**
 
