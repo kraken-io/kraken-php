@@ -216,7 +216,7 @@ Kraken API allows you to store optimized images directly in your S3 bucket or Cl
 - `bucket` - Name of a destination container on your Amazon S3 account.
 
 **Optional Parameters:**
-- `path - Destination path in your S3 bucket (e.g. **"images/layout/header.jpg"**). Defaults to root **"/"**.
+- `path` - Destination path in your S3 bucket (e.g. **"images/layout/header.jpg"**). Defaults to root **"/"**.
 - `acl` - Permissions of a destination object. This can be **"public_read"** or **"private"**. Defaults to **"public_read"**.
 
 The above parameters must be passed in a `s3_store` key:
@@ -255,7 +255,7 @@ The `$data` array will contain `kraked_url` key pointing directly to the optimiz
 - `container` - Name of a destination container on your Cloud Files account.
 
 **Optional Parameters:**
-- `path - Destination path in your container (e.g. **"images/layout/header.jpg"**). Defaults to root **"/"**.
+- `path` - Destination path in your container (e.g. **"images/layout/header.jpg"**). Defaults to root **"/"**.
 
 The above parameters must be passed in a `cf_store` key:
 
