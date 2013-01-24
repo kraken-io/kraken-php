@@ -198,11 +198,11 @@ $data = $kraken->upload($params);
 
 The `strategy` property can have one of the following values:
 
-`exact` - Resize by exact width/height. No aspect ratio will be maintained.
-`portrait` - Exact width will be set, height will be adjusted according to aspect ratio.
-`landscape` - Exact height will be set, width will be adjusted according to aspect ratio.
-`auto` - The best strategy (portrait or landscape) will be selected for a given image according to aspect ratio.
-`crop` - This option will crop your image to the exact size you specify with no distortion.
+- `exact` - Resize by exact width/height. No aspect ratio will be maintained.
+- `portrait` - Exact width will be set, height will be adjusted according to aspect ratio.
+- `landscape` - Exact height will be set, width will be adjusted according to aspect ratio.
+- `auto` - The best strategy (portrait or landscape) will be selected for a given image according to aspect ratio.
+- `crop` - This option will crop your image to the exact size you specify with no distortion.
 
 ## Amazon S3 or Rackspace Cloud Files External Storage
 
@@ -211,13 +211,13 @@ Kraken API allows you to store optimized images directly in your S3 bucket or Cl
 ### 1. Amazon S3
 
 **Mandatory Parameters:**
-`key` - Your unique Amazon "Access Key ID".
-`secret` - Your unique Amazon "Secret Access Key".
-`bucket` - Name of a destination container on your Amazon S3 account.
+- `key` - Your unique Amazon "Access Key ID".
+- `secret` - Your unique Amazon "Secret Access Key".
+- `bucket` - Name of a destination container on your Amazon S3 account.
 
 **Optional Parameters:**
-`path - Destination path in your S3 bucket (e.g. **"images/layout/header.jpg"**). Defaults to root **"/"**.
-`acl` - Permissions of a destination object. This can be **"public_read"** or **"private"**. Defaults to **"public_read"**.
+- `path - Destination path in your S3 bucket (e.g. **"images/layout/header.jpg"**). Defaults to root **"/"**.
+- `acl` - Permissions of a destination object. This can be **"public_read"** or **"private"**. Defaults to **"public_read"**.
 
 The above parameters must be passed in a `s3_store` key:
 
@@ -250,12 +250,12 @@ The `$data` array will contain `kraked_url` key pointing directly to the optimiz
 ### 2. Rackspace Cloud Files
 
 **Mandatory Parameters:**
-`user` - Your Rackspace username.
-`key` - Your unique Cloud Files API Key.
-`container` - Name of a destination container on your Cloud Files account.
+- `user` - Your Rackspace username.
+- `key` - Your unique Cloud Files API Key.
+- `container` - Name of a destination container on your Cloud Files account.
 
 **Optional Parameters:**
-`path - Destination path in your container (e.g. **"images/layout/header.jpg"**). Defaults to root **"/"**.
+- `path - Destination path in your container (e.g. **"images/layout/header.jpg"**). Defaults to root **"/"**.
 
 The above parameters must be passed in a `cf_store` key:
 
