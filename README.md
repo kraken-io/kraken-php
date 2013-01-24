@@ -29,7 +29,7 @@ With the `wait` option turned on for every request to the API, the connection wi
     "api_key": "your-api-key",
     "api_secret": "your-api-secret"
   },
-  "url": "http://awesome-website.com/images/header.jpg",
+  "url": "http://image-url.com/file.jpg",
   "wait": true
 }
 ````
@@ -39,11 +39,11 @@ With the `wait` option turned on for every request to the API, the connection wi
 ````js
 {
   "success": true,
-  "file_name": "header.jpg",
+  "file_name": "file.jpg",
   "original_size": 324520,
   "kraked_size": 165358,
   "saved_bytes": 159162,
-  "kraked_url": "https://api.kraken.io/files/d2bcaa126cc07728/header.jpg"
+  "kraked_url": "https://api.kraken.io/files/d2bcaa126cc07728/file.jpg"
 }
 ````
 
@@ -61,7 +61,7 @@ We recommend [requestb.in](http://requestb.in) as an easy way to capture optimiz
     "api_key": "your-api-key",
     "api_secret": "your-api-secret"
   },
-  "url": "http://awesome-website.com/images/header.jpg",
+  "url": "http://image-url.com/file.jpg",
   "callback_url": "http://awesome-website.com/kraken_results"
 }
 ````
@@ -80,11 +80,11 @@ We recommend [requestb.in](http://requestb.in) as an easy way to capture optimiz
 {
   "id": "0194b7d7cb"
   "success": true,
-  "file_name": "header.jpg",
+  "file_name": "file.jpg",
   "original_size": 324520,
   "kraked_size": 165358,
   "saved_bytes": 159162,
-  "kraked_url": "https://api.kraken.io/files/b15e7f341645a65a/header.jpg"
+  "kraked_url": "https://api.kraken.io/files/b15e7f341645a65a/file.jpg"
 }
 ````
 
@@ -112,7 +112,7 @@ require_once("Kraken.php");
 $kraken = new Kraken("your-api-key", "your-api-secret");
 
 $params = array(
-    "url" => "http://url-to-image/file.jpg",
+    "url" => "http://url-to-image.com/file.jpg",
     "wait" => true
 );
 
@@ -126,7 +126,7 @@ array(6) {
     'success' =>
     bool(true)
     'file_name' =>
-    string(20) "file.jpg"
+    string(8) "file.jpg"
     'original_size' =>
     int(62422)
     'kraked_size' =>
