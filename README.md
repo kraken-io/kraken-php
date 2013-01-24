@@ -204,7 +204,7 @@ The `strategy` property can have one of the following values:
 - `auto` - The best strategy (portrait or landscape) will be selected for a given image according to aspect ratio.
 - `crop` - This option will crop your image to the exact size you specify with no distortion.
 
-## Amazon S3 or Rackspace Cloud Files External Storage
+## Amazon S3 and Rackspace Cloud Files
 
 Kraken API allows you to store optimized images directly in your S3 bucket or Cloud Files container. With just a few addidtional parameters your optimized images will be pushed to your external storage in no-time.
 
