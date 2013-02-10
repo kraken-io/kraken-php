@@ -143,7 +143,7 @@ If no saving were found, the API will return an object containing `"success":fal
 ````php
 array(6) {
     'success' =>
-    bool(true)
+    bool(false)
     'file_name' =>
     string(8) "file.jpg"
     'error' =>
