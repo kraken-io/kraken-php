@@ -255,7 +255,7 @@ The `$data` array will contain `kraked_url` key pointing directly to the optimiz
 - `container` - Name of a destination container on your Cloud Files account.
 
 **Optional Parameters:**
-- `path` - Destination path in your container (e.g. `"images/layout/header.jpg"). Defaults to root `"/"`.
+- `path` - Destination path in your container (e.g. `"images/layout/header.jpg"`). Defaults to root `"/"`.
 
 The above parameters must be passed in a `cf_store` key:
 
