@@ -189,7 +189,7 @@ $data = $kraken->upload($params);
 
 ## Lossy Optimizations
 
-When you decide to sacrifice just a small amount of image quality (unnoticeable to the human eye), you will be able to save up to 90% (!) of the initial file weight. Lossy optimization will give you outstanding results with just a fraction of image quality loss.
+When you decide to sacrifice just a small amount of image quality (unnoticeable to the human eye), you will be able to save up to 90% of the initial file weight. Lossy optimization will give you outstanding results with just a fraction of image quality loss.
 
 To use lossy optimizations simply set `"lossy" => true` property in your request:
 
