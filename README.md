@@ -3,6 +3,21 @@ kraken-php
 
 With this official Kraken PHP library you can plug into the power and speed of [Kraken.io](http://kraken.io/) Image Optimizer.
 
+* [Getting Started](#getting-started)
+* [How To Use](#how-to-use)
+* [Wait and Callback URL](#wait-and-callback-url)
+  * [Wait Option](#wait-option)
+  * [Callback URL](#callback-url)
+* [Authentication](#authentication)
+* [Usage - Image URL](#usage---image-url)
+* [Usage - Image Upload](#usage---image-upload)
+* [Lossy Optimizations](#lossy-optimizations)
+* [Image Resizing](#image-resizing)
+* [Amazon S3 and Rackspace Cloud Files Integration](#amazon-s3-and-rackspace-cloud-files)
+  * [Amazon S3](#amazon-s3)
+  * [Rackspace Cloud Files](#rackspace-cloud-files)
+
+
 ## Getting Started
 
 First you need to sign-up for a [Kraken API](http://kraken.io/plans/) and obtain your unique **API Key** and **API Secret**. You will find both under [API Credentials](http://kraken.io/account/api-credentials). Once you have set-up your account, you can start using Kraken API in your applications.
