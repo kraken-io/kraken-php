@@ -294,11 +294,13 @@ $params = array(
 $data = $kraken->upload($params);
 ````
 
-The `$data` array will contain `kraked_url` key pointing directly to the optimized file location in your Rackspace Cloud Files account:
+If your container is CDN-enabled, the optimization results will contain `kraked_url` ket pointing directly to the optimized file location in your Cloud Files container, for example:
 
 ````php
 "kraked_url" => "http://e9ffc04970a269a54eeb-cc00fdd2d4f11dffd931005c9e8de53a.r2.cf1.rackcdn.com/path/to/file.jpg"
 ````
+
+If your container is not CDN-enabled `kraked_url` will point to optimized image URL in the Kraken API.
 
 ## LICENSE - MIT
 
