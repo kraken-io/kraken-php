@@ -1,4 +1,4 @@
-kraken-php
+PHP library for Kraken.io API
 ==========
 
 With this official Kraken PHP library you can plug into the power and speed of [Kraken.io](http://kraken.io/) Image Optimizer.
