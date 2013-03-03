@@ -187,6 +187,34 @@ $params = array(
 $data = $kraken->upload($params);
 ````
 
+## Lossy Optimizations
+
+When you decide to sacrifice just a small amount of image quality (unnoticeable to the human eye), you will be able to save up to 90% (!) of the initial file weight. Lossy optimization will give you outstanding results with just a fraction of image quality loss.
+
+To use lossy optimizations simply set `"lossy" => true` property in your request:
+
+````php
+<?php
+
+require_once("Kraken.php");
+
+$kraken = new Kraken("your-api-key", "your-api-secret");
+
+$params = array(
+    "file" => "/path/to/image/file.jpg",
+    "wait" => true,
+    "lossy" => true
+);
+
+$data = $kraken->upload($params);
+````
+
+### PNG Images
+PNG images will be converted from 24-bit to 8-bit with full alpha channel. It means that the amout of colours used in an image will be reduced while maintaining all information about alpha transparency.
+
+### JPEG Images
+For JPEG images Kraken will use it's built-in algorythms to determine the best quality of the image based on a few factors like image dimenstions and number of colors used.
+
 ## Image Resizing
 
 Image resizing option is great for creating thumbnails or preview images in your applications. Kraken will first resize the given image and then optimize it with it's vast array of optimization algorythms. The `resize` option needs a few parameters to be passed like desired `width` and/or `height` and a mandatory `strategy` property. For example:
