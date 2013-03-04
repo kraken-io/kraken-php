@@ -210,10 +210,10 @@ $data = $kraken->upload($params);
 ````
 
 ### PNG Images
-PNG images will be converted from 24-bit to 8-bit with full alpha channel. It means that the amout of colours used in an image will be reduced while maintaining all information about alpha transparency.
+PNG images will be converted from 24-bit to paletted 8-bit with full alpha channel. This process is called PNG quantization in RGBA format and means the amout of colours used in an image will be reduced to 256 while maintaining all information about alpha transparency.
 
 ### JPEG Images
-For JPEG images Kraken will use it's built-in algorythms to determine the best quality of the image based on a few factors like image dimenstions and number of colors used.
+For lossy JPEG optimizations we use an excellent library called [imgmin](https://github.com/rflynn/imgmin) by [Ryan Flynn](http://www.parseerror.com/). This library generates several versions of an image at multiple different quality settings, and finds the version with the mean pixel error rate nearest to but not exceeding 1.0. This ensures your JPEG image will be at the smallest size with the highest possible quality.
 
 ## Image Resizing
 
