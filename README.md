@@ -149,7 +149,7 @@ array(6) {
     'saved_bytes' =>
     int(9639)
     'kraked_url' =>
-    string(65) "https://api.kraken.io/files/3a30e2eb204d7607/file.jpg"
+    string(65) "https://api.kraken.io/d1aacd2a2280c2ffc7b4906a09f78f46/file.jpg"
 }
 ````
 
