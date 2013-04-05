@@ -20,21 +20,21 @@ With this official Kraken PHP library you can plug into the power and speed of [
 
 ## Getting Started
 
-First you need to sign-up for a [Kraken API](http://kraken.io/plans/) and obtain your unique **API Key** and **API Secret**. You will find both under [API Credentials](http://kraken.io/account/api-credentials). Once you have set-up your account, you can start using Kraken API in your applications.
+First you need to sign up for the [Kraken API](http://kraken.io/plans/) and obtain your unique **API Key** and **API Secret**. You will find both under [API Credentials](http://kraken.io/account/api-credentials). Once you have set up your account, you can start using Kraken API in your applications.
 
 ## How to use
 
 You can optimize your images in two ways - by providing an URL of the image you want to optimize or by uploading an image file directly to Kraken API.
 
-The first option (image URL) is great for images that are already in production or any other place on the Internet. The second one (direct upload) is ideal for your deployment process, build script or the on-the-fly processing of your user's uploads where you don't have the images available on-line yet.
+The first option (image URL) is great for images that are already in production or any other place on the Internet. The second one (direct upload) is ideal for your deployment process, build script or the on-the-fly processing of your user's uploads where you don't have the images available online yet.
 
 ## Wait and Callback URL
 
-Kraken gives you two options for fetching optimization results. With `wait` option the results will be returned immediately in the response. With `callback_url` the results will be posted to the URL specified in your request.
+Kraken gives you two options for fetching optimization results. With the `wait` option set the results will be returned immediately in the response. With the `callback_url` option set the results will be posted to the URL specified in your request.
 
 ### Wait option
 
-With the `wait` option turned on for every request to the API, the connection will be hold open unil the image has been optimized. Once this is done you will get a immediate response with a JSON object containing optimization results. To use this option simply set `"wait": true` property in your request.
+With the `wait` option turned on for every request to the API, the connection will be held open unil the image has been optimized. Once this is done you will get an immediate response with a JSON object containing your optimization results. To use this option simply set `"wait": true` in your request.
 
 **Request:**
 
@@ -105,7 +105,7 @@ We recommend [requestb.in](http://requestb.in) as an easy way to capture optimiz
 
 ## Authentication
 
-First step is to authenticate with Kraken API by providing your unique API Key and API Secret while creating new Kraken instance:
+The first step is to authenticate to Kraken API by providing your unique API Key and API Secret while creating a new Kraken instance:
 
 ````php
 <?php
@@ -117,7 +117,7 @@ $kraken = new Kraken("your-api-key", "your-api-secret");
 
 ## Usage - Image URL
 
-To optimize an image by providing image URL use the `kraken->url()` method. You will need to provide two mandatory parameters in an array - `url` to the image and `wait` or `callback_url`:
+To optimize an image by providing image URL use the `kraken.url()` method. You will need to provide two mandatory parameters in an array - `url` to the image and `wait` or `callback_url`:
 
 ````php
 <?php
@@ -134,7 +134,7 @@ $params = array(
 $data = $kraken->url($params);
 ````
 
-Depending on a choosen response option (Wait or Callback URL) in the `$data` array you will find either the optimization ID or optimization results containing `success` property, file name, original file size, kraked file size, amount of savings and optimized image URL:
+Depending on a choosen response option (Wait or Callback URL) in the `data` object you will find either the optimization ID or optimization results containing a `success` property, file name, original file size, kraked file size, amount of savings and optimized image URL:
 
 ````php
 array(6) {
@@ -170,7 +170,7 @@ array(6) {
 
 If you want to upload your images directly to Kraken API use the `kraken->upload()` method. You will need to provide two mandatory parameters in an array - `file` which is the absolute path to the file and `wait` or `callback_url`.
 
-In the `$data` array you will find the same optimization properties as with `url` option above.
+In the `$data` array you will find the same optimization properties as with the `url` option above.
 
 ````php
 <?php
@@ -187,11 +187,11 @@ $params = array(
 $data = $kraken->upload($params);
 ````
 
-## Lossy Optimizations
+## Lossy Optimization
 
-When you decide to sacrifice just a small amount of image quality (unnoticeable to the human eye), you will be able to save up to 90% of the initial file weight. Lossy optimization will give you outstanding results with just a fraction of image quality loss.
+When you decide to sacrifice just a small amount of image quality (usually unnoticeable to the human eye), you will be able to save up to 90% of the initial file weight. Lossy optimization will give you outstanding results with just a fraction of image quality loss.
 
-To use lossy optimizations simply set `"lossy" => true` property in your request:
+To use lossy optimizations simply set `"lossy" => true` in your request:
 
 ````php
 <?php
@@ -217,7 +217,7 @@ For lossy JPEG optimizations we use an excellent library called [imgmin](https:/
 
 ## Image Resizing
 
-Image resizing option is great for creating thumbnails or preview images in your applications. Kraken will first resize the given image and then optimize it with it's vast array of optimization algorythms. The `resize` option needs a few parameters to be passed like desired `width` and/or `height` and a mandatory `strategy` property. For example:
+Image resizing option is great for creating thumbnails or preview images in your applications. Kraken will first resize the given image and then optimize it with its vast array of optimization algorithms. The `resize` option needs a few parameters to be passed like desired `width` and/or `height` and a mandatory `strategy` property. For example:
 
 ````php
 <?php
@@ -249,7 +249,7 @@ The `strategy` property can have one of the following values:
 
 ## Amazon S3 and Rackspace Cloud Files
 
-Kraken API allows you to store optimized images directly in your S3 bucket or Cloud Files container. With just a few addidtional parameters your optimized images will be pushed to your external storage in no-time.
+Kraken API allows you to store optimized images directly in your S3 bucket or Cloud Files container. With just a few additional parameters your optimized images will be pushed to your external storage in no time.
 
 ### Amazon S3
 
@@ -284,7 +284,7 @@ $params = array(
 $data = $kraken->upload($params);
 ````
 
-The `$data` array will contain `kraked_url` key pointing directly to the optimized file location in your Amazon S3 account:
+The `$data` array will contain a `kraked_url` key pointing directly to the optimized file in your Amazon S3 account:
 
 ````php
 "kraked_url" => "http://s3.amazonaws.com/YOUR_CONTAINER/path/to/file.jpg"
@@ -322,7 +322,7 @@ $params = array(
 $data = $kraken->upload($params);
 ````
 
-If your container is CDN-enabled, the optimization results will contain `kraked_url` ket pointing directly to the optimized file location in your Cloud Files container, for example:
+If your container is CDN-enabled, the optimization results will contain `kraked_url` ket pointing directly to the optimized file in your Cloud Files container, for example:
 
 ````php
 "kraked_url" => "http://e9ffc04970a269a54eeb-cc00fdd2d4f11dffd931005c9e8de53a.r2.cf1.rackcdn.com/path/to/file.jpg"
