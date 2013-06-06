@@ -39,6 +39,7 @@ Kraken dynamically chooses best compression and optimization algorithms and thei
 **GIF Images**
 
 Since Kraken supports GIF to PNG8 conversion and optimization (because PNGs are almost always superior to GIFs) your static GIF images will be returned as optimized PNG files. In this case you have to change file extensions in your websites or applications.
+
 Optimized GIF animations will always be returned as standard animation GIF files.
 
 ## How to use
