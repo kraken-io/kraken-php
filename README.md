@@ -65,12 +65,12 @@ With the `wait` option turned on for every request to the API, the connection wi
 
 ````js
 {
-  "auth": {
-    "api_key": "your-api-key",
-    "api_secret": "your-api-secret"
-  },
-  "url": "http://image-url.com/file.jpg",
-  "wait": true
+    "auth": {
+        "api_key": "your-api-key",
+        "api_secret": "your-api-secret"
+    },
+    "url": "http://image-url.com/file.jpg",
+    "wait": true
 }
 ````
 
@@ -78,12 +78,12 @@ With the `wait` option turned on for every request to the API, the connection wi
 
 ````js
 {
-  "success": true,
-  "file_name": "file.jpg",
-  "original_size": 324520,
-  "kraked_size": 165358,
-  "saved_bytes": 159162,
-  "kraked_url": "http://dl.kraken.io/d1aacd2a2280c2ffc7b4906a09f78f46/file.jpg"
+    "success": true,
+    "file_name": "file.jpg",
+    "original_size": 324520,
+    "kraked_size": 165358,
+    "saved_bytes": 159162,
+    "kraked_url": "http://dl.kraken.io/d1aacd2a2280c2ffc7b4906a09f78f46/file.jpg"
 }
 ````
 
@@ -97,12 +97,12 @@ We recommend [requestb.in](http://requestb.in) as an easy way to capture optimiz
 
 ````js
 {
-  "auth": {
-    "api_key": "your-api-key",
-    "api_secret": "your-api-secret"
-  },
-  "url": "http://image-url.com/file.jpg",
-  "callback_url": "http://awesome-website.com/kraken_results"
+    "auth": {
+        "api_key": "your-api-key",
+        "api_secret": "your-api-secret"
+    },
+    "url": "http://image-url.com/file.jpg",
+    "callback_url": "http://awesome-website.com/kraken_results"
 }
 ````
 
@@ -110,7 +110,7 @@ We recommend [requestb.in](http://requestb.in) as an easy way to capture optimiz
 
 ````js
 {
-  "id": "18fede37617a787649c3f60b9f1f280d"
+    "id": "18fede37617a787649c3f60b9f1f280d"
 }
 ````
 
@@ -118,13 +118,13 @@ We recommend [requestb.in](http://requestb.in) as an easy way to capture optimiz
 
 ````js
 {
-  "id": "18fede37617a787649c3f60b9f1f280d"
-  "success": true,
-  "file_name": "file.jpg",
-  "original_size": 324520,
-  "kraked_size": 165358,
-  "saved_bytes": 159162,
-  "kraked_url": "http://dl.kraken.io/18fede37617a787649c3f60b9f1f280d/file.jpg"
+    "id": "18fede37617a787649c3f60b9f1f280d"
+    "success": true,
+    "file_name": "file.jpg",
+    "original_size": 324520,
+    "kraked_size": 165358,
+    "saved_bytes": 159162,
+    "kraked_url": "http://dl.kraken.io/18fede37617a787649c3f60b9f1f280d/file.jpg"
 }
 ````
 
@@ -373,13 +373,13 @@ $data = $kraken->upload($params);
 If your container is CDN-enabled, the optimization results will contain `kraked_url` which points directly to the optimized file location in your Cloud Files account, for example:
 
 ````php
-    kraked_url => "http://e9ffc04970a269a54eeb-cc00fdd2d4f11dffd931005c9e8de53a.r2.cf1.rackcdn.com/path/to/file.jpg"
+kraked_url => "http://e9ffc04970a269a54eeb-cc00fdd2d4f11dffd931005c9e8de53a.r2.cf1.rackcdn.com/path/to/file.jpg"
 ````
 
 If your container is not CDN-enabled `kraked_url` will point to the optimized image URL in the Kraken API:
 
 ````php
-    kraked_url => "http://dl.kraken.io/ecdfa5c55d5668b1b5fe9e420554c4ee/file.jpg"
+kraked_url => "http://dl.kraken.io/ecdfa5c55d5668b1b5fe9e420554c4ee/file.jpg"
 ````
 
 If your container is not CDN-enabled `kraked_url` will point to optimized image URL in the Kraken API.
