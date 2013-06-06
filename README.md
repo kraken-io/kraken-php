@@ -5,6 +5,7 @@ With this official Kraken PHP library you can plug into the power and speed of [
 
 * [Getting Started](#getting-started)
 * [Optimization Process](#optimization-process)
+* [Downloading Images](#downloading-images)
 * [How To Use](#how-to-use)
 * [Wait and Callback URL](#wait-and-callback-url)
   * [Wait Option](#wait-option)
@@ -41,6 +42,10 @@ Kraken dynamically chooses best compression and optimization algorithms and thei
 Since Kraken supports GIF to PNG8 conversion and optimization (because PNGs are almost always superior to GIFs) your static GIF images will be returned as optimized PNG files. In this case you have to change file extensions in your websites or applications.
 
 Optimized GIF animations will always be returned as standard animation GIF files.
+
+## Downloading Images
+
+Remember - never link to optimized images offered to download. You have to download them first, and then replace them in your websites or applications. Due to security reasons optimized images are available on our servers **for one hour** only.
 
 ## How to use
 
