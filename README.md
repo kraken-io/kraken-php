@@ -30,7 +30,7 @@ First you need to sign up for the [Kraken API](http://kraken.io/plans/) and obta
 
 For JPEGs Kraken does a vast array of optimizations. It strips all metadata found in a given image, optimizes Huffman tables, converts image to progressive format and tries a variety of custom progressive scans to find best structure per image.
 
-For lossy JPEG optimizations we additionaly use imgmin library by Ryan Flynn which generates multiple copies of the input image using different quality settings. Then it intelligently picks the one with the best quality to size ratio. This ensures your JPEG image will be at the smallest size with the highest possible quality, without the need for a human to select the optimal image.
+For lossy JPEG optimizations we additionaly use `imgmin` library by Ryan Flynn which generates multiple copies of the input image using different quality settings. Then it intelligently picks the one with the best quality to size ratio. This ensures your JPEG image will be at the smallest size with the highest possible quality, without the need for a human to select the optimal image.
 
 **PNG Images**
 
