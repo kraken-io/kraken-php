@@ -173,7 +173,7 @@ array(6) {
 }
 ````
 
-If no saving were found, the API will return an object containing `"success":false` and a proper error message:
+If no saving were found, the API will return an array containing `"success":false` and a proper error message:
 
 ````php
 array(6) {
@@ -273,16 +273,21 @@ WebP is a new image format introduced by Google in 2010 which supports both loss
 
 To recompress your PNG or JPEG files into WebP format simply set `"webp": true` flag in your request JSON. You can also optionally set `"lossy": true` flag to leverage WebP's lossy compression:
 
-````js
-{
-    "auth": {
-        "api_key": "your-api-key",
-        "api_secret": "your-api-secret"
-    },
-    "url": "http://awesome-website.com/images/header.jpg",
-    "webp": true,
-    "lossy": true
-}
+````php
+<?php
+
+require_once("Kraken.php");
+
+$kraken = new Kraken("your-api-key", "your-api-secret");
+
+$params = array(
+    "file" => "/path/to/image/file.jpg",
+    "wait" => true,
+    "webp" => true,
+    "lossy" => true
+);
+
+$data = $kraken->upload($params);
 ````
 
 ## Amazon S3 and Rackspace Cloud Files
