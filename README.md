@@ -13,6 +13,7 @@ With this official Kraken PHP library you can plug into the power and speed of [
 * [Usage - Image Upload](#usage---image-upload)
 * [Lossy Optimizations](#lossy-optimizations)
 * [Image Resizing](#image-resizing)
+* [WebP Compression](#webp-compression)
 * [Amazon S3 and Rackspace Cloud Files Integration](#amazon-s3-and-rackspace-cloud-files)
   * [Amazon S3](#amazon-s3)
   * [Rackspace Cloud Files](#rackspace-cloud-files)
@@ -213,7 +214,7 @@ $data = $kraken->upload($params);
 PNG images will be converted from 24-bit to paletted 8-bit with full alpha channel. This process is called PNG quantization in RGBA format and means the amout of colours used in an image will be reduced to 256 while maintaining all information about alpha transparency.
 
 ### JPEG Images
-For lossy JPEG optimizations we use an excellent library called [imgmin](https://github.com/rflynn/imgmin) by [Ryan Flynn](http://www.parseerror.com/). This library generates several versions of an image at multiple different quality settings, and finds the version with the mean pixel error rate nearest to but not exceeding 1.0. This ensures your JPEG image will be at the smallest size with the highest possible quality.
+For lossy JPEG optimizations we use [imgmin](https://github.com/rflynn/imgmin) library by Ryan Flynn which generates multiple copies of the input image using different quality settings. Then it intelligently picks the one with the best quality to size ratio. This ensures your JPEG image will be at the smallest size with the highest possible quality, without the need for a human to select the optimal image.
 
 ## Image Resizing
 
@@ -246,6 +247,24 @@ The `strategy` property can have one of the following values:
 - `landscape` - Exact height will be set, width will be adjusted according to aspect ratio.
 - `auto` - The best strategy (portrait or landscape) will be selected for a given image according to aspect ratio.
 - `crop` - This option will crop your image to the exact size you specify with no distortion.
+
+## WebP Compression
+
+WebP is a new image format introduced by Google in 2010 which supports both lossy and lossless compression. According to [Google](https://developers.google.com/speed/webp/), WebP lossless images are **26% smaller** in size compared to PNGs and WebP lossy images are **25-34% smaller** in size compared to JPEG images.
+
+To recompress your PNG or JPEG files into WebP format simply set `"webp": true` flag in your request JSON. You can also optionally set `"lossy": true` flag to leverage WebP's lossy compression:
+
+````js
+{
+    "auth": {
+        "api_key": "your-api-key",
+        "api_secret": "your-api-secret"
+    },
+    "url": "http://awesome-website.com/images/header.jpg",
+    "webp": true,
+    "lossy": true
+}
+````
 
 ## Amazon S3 and Rackspace Cloud Files
 
