@@ -27,15 +27,19 @@ First you need to sign up for the [Kraken API](http://kraken.io/plans/) and obta
 ## Optimization Process
 
 **JPEG Images**
+
 For JPEGs Kraken does a vast array of optimizations. It strips all metadata found in a given image, optimizes Huffman tables, converts image to progressive format and tries a variety of custom progressive scans to find best structure per image.
 
 For lossy JPEG optimizations we additionaly use imgmin library by Ryan Flynn which generates multiple copies of the input image using different quality settings. Then it intelligently picks the one with the best quality to size ratio. This ensures your JPEG image will be at the smallest size with the highest possible quality, without the need for a human to select the optimal image.
 
 **PNG Images**
+
 Kraken dynamically chooses best compression and optimization algorithms and their optimal settings for a given PNG to ensure an outstanding image quality with the minimum file weight.
 
 **GIF Images**
-Since Kraken supports GIF to PNG8 conversion and optimization (because PNGs are almost always superior to GIFs) your static GIF images will be returned as optimized PNG files. In this case you have to change file extensions in your websites or applications. Optimized GIF animations will be and returned as standard animation GIF files.
+
+Since Kraken supports GIF to PNG8 conversion and optimization (because PNGs are almost always superior to GIFs) your static GIF images will be returned as optimized PNG files. In this case you have to change file extensions in your websites or applications.
+Optimized GIF animations will always be returned as standard animation GIF files.
 
 ## How to use
 
