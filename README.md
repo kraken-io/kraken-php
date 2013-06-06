@@ -370,10 +370,16 @@ $params = array(
 $data = $kraken->upload($params);
 ````
 
-If your container is CDN-enabled, the optimization results will contain `kraked_url` ket pointing directly to the optimized file in your Cloud Files container, for example:
+If your container is CDN-enabled, the optimization results will contain `kraked_url` which points directly to the optimized file location in your Cloud Files account, for example:
 
 ````php
-"kraked_url" => "http://e9ffc04970a269a54eeb-cc00fdd2d4f11dffd931005c9e8de53a.r2.cf1.rackcdn.com/path/to/file.jpg"
+    kraked_url => "http://e9ffc04970a269a54eeb-cc00fdd2d4f11dffd931005c9e8de53a.r2.cf1.rackcdn.com/path/to/file.jpg"
+````
+
+If your container is not CDN-enabled `kraked_url` will point to the optimized image URL in the Kraken API:
+
+````php
+    kraked_url => "http://dl.kraken.io/ecdfa5c55d5668b1b5fe9e420554c4ee/file.jpg"
 ````
 
 If your container is not CDN-enabled `kraked_url` will point to optimized image URL in the Kraken API.
