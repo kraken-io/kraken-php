@@ -83,7 +83,7 @@ With the `wait` option turned on for every request to the API, the connection wi
   "original_size": 324520,
   "kraked_size": 165358,
   "saved_bytes": 159162,
-  "kraked_url": "https://api.kraken.io/d1aacd2a2280c2ffc7b4906a09f78f46/file.jpg"
+  "kraked_url": "http://dl.kraken.io/d1aacd2a2280c2ffc7b4906a09f78f46/file.jpg"
 }
 ````
 
@@ -124,7 +124,7 @@ We recommend [requestb.in](http://requestb.in) as an easy way to capture optimiz
   "original_size": 324520,
   "kraked_size": 165358,
   "saved_bytes": 159162,
-  "kraked_url": "https://api.kraken.io/18fede37617a787649c3f60b9f1f280d/file.jpg"
+  "kraked_url": "http://dl.kraken.io/18fede37617a787649c3f60b9f1f280d/file.jpg"
 }
 ````
 
@@ -174,7 +174,7 @@ array(6) {
     'saved_bytes' =>
     int(9639)
     'kraked_url' =>
-    string(65) "https://api.kraken.io/d1aacd2a2280c2ffc7b4906a09f78f46/file.jpg"
+    string(65) "http://dl.kraken.io/d1aacd2a2280c2ffc7b4906a09f78f46/file.jpg"
 }
 ````
 
