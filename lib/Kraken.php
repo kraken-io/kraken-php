@@ -1,9 +1,12 @@
 <?php
 
-class Kraken {
+class Kraken
+{
+
     protected $auth = array();
 
-    public function __construct($key = '', $secret = '') {
+    public function __construct($key = '', $secret = '')
+    {
         $this->auth = array(
             "auth" => array(
                 "api_key" => $key,
@@ -12,15 +15,33 @@ class Kraken {
         );
     }
 
-    public function url($opts = array()) {
+    public function url($opts = array())
+    {
         $data = json_encode(array_merge($this->auth, $opts));
         $response = self::request($data, "https://api.kraken.io/v1/url");
 
         return $response;
     }
 
-    public function upload($opts = array()) {
-        if (!file_exists($opts['file'])) {
+    public function upload($opts = array())
+    {
+        if (!isset($opts['file']))
+        {
+            return array(
+                "success" => false,
+                "error" => "File parameter was not provided"
+            );
+        }
+
+        if (preg_match("/\/\//i", $opts['file']))
+        {
+            $opts['url'] = $opts['file'];
+            unset($opts['file']);
+            return $this->url($opts);
+        }
+
+        if (!file_exists($opts['file']))
+        {
             return array(
                 "success" => false,
                 "error" => "File `" . $opts['file'] . "` does not exist"
@@ -34,8 +55,7 @@ class Kraken {
         $data = array_merge(array(
             "file" => $file,
             "data" => json_encode(array_merge(
-                $this->auth,
-                $opts
+                            $this->auth, $opts
             ))
         ));
 
@@ -44,7 +64,8 @@ class Kraken {
         return $response;
     }
 
-    private function request($data, $url) {
+    private function request($data, $url)
+    {
         $curl = curl_init();
 
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -58,4 +79,5 @@ class Kraken {
 
         return $response;
     }
+
 }
