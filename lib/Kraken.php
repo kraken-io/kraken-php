@@ -83,10 +83,16 @@ class Kraken
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_FAILONERROR, 1);
 
         $response = json_decode(curl_exec($curl), true);
+        $error = curl_errno($curl);
 
         curl_close($curl);
+
+        if ($error > 0) {
+            throw new RuntimeException(sprinf('cURL returned with the following error code: "%s"', $error));
+        }
 
         return $response;
     }
