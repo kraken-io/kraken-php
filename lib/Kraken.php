@@ -64,6 +64,17 @@ class Kraken
         return $response;
     }
 
+    public function status()
+    {
+        $data = (array(
+            'api_key' => $this->auth['auth']['api_key'],
+            'api_secret' => $this->auth['auth']['api_secret']
+        ));
+        $response = self::request($data, "https://api.kraken.io/user_status");
+
+        return $response;
+    }
+
     private function request($data, $url)
     {
         $curl = curl_init();
@@ -72,10 +83,16 @@ class Kraken
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_FAILONERROR, 1);
 
         $response = json_decode(curl_exec($curl), true);
+        $error = curl_errno($curl);
 
         curl_close($curl);
+
+        if ($error > 0) {
+            throw new RuntimeException(sprinf('cURL returned with the following error code: "%s"', $error));
+        }
 
         return $response;
     }
