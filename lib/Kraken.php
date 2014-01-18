@@ -91,7 +91,7 @@ class Kraken
         curl_close($curl);
 
         if ($error > 0) {
-            throw new RuntimeException(sprinf('cURL returned with the following error code: "%s"', $error));
+            throw new RuntimeException(sprintf('cURL returned with the following error code: "%s"', $error));
         }
 
         return $response;
