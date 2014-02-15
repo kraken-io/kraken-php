@@ -66,11 +66,11 @@ class Kraken
 
     public function status()
     {
-        $data = (array(
+        $data = array('auth' => array(
             'api_key' => $this->auth['auth']['api_key'],
             'api_secret' => $this->auth['auth']['api_secret']
         ));
-        $response = self::request($data, "https://api.kraken.io/user_status");
+        $response = self::request(json_encode($data), "https://api.kraken.io/user_status");
 
         return $response;
     }
