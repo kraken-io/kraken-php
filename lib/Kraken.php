@@ -98,7 +98,7 @@ class Kraken
             return false;
         }
         
-        $data = json_encode(array_merge($this->auth, "name" => $sub_account));
+        $data = json_encode(array_merge($this->auth, array("name" => $sub_account)));
         
         $response = self::request($data, "https://api.kraken.io/v1/subaccounts");
         
