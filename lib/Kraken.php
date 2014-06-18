@@ -49,7 +49,7 @@ class Kraken
         }
 
         if( class_exists( 'CURLFile') ) {
-			$file = curl_file_create( $opts['file'], NULL, 'kraken_tmp' );
+			$file = new CURLFile( $opts['file'] );
 		} else {
 			$file = '@' . $opts['file'];
 		}
