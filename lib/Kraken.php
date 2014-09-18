@@ -48,7 +48,11 @@ class Kraken
             );
         }
 
-        $file = '@' . $opts['file'];
+        if( class_exists( 'CURLFile') ) {
+			$file = new CURLFile( $opts['file'] );
+		} else {
+			$file = '@' . $opts['file'];
+		}
 
         unset($opts['file']);
 
