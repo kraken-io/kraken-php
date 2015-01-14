@@ -23,6 +23,12 @@ class Kraken
         return $response;
     }
 
+    private function json_decode_array($input)
+    {
+        $from_json = json_decode($input, true);
+        return $from_json ? $from_json : $input;
+    }
+
     public function multi_url($urls, $opts = array())
     {
         $multi_curl = curl_multi_init();
@@ -48,7 +54,7 @@ class Kraken
         }
         curl_multi_close($multi_curl);
 
-        return $responses;
+        return array_map(array('self', 'json_decode_array'), $responses);
     }
 
     public function upload($opts = array())
