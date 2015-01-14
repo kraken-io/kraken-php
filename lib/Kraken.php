@@ -23,6 +23,34 @@ class Kraken
         return $response;
     }
 
+    public function multi_url($urls, $opts = array())
+    {
+        $multi_curl = curl_multi_init();
+        $requests = array();
+        $responses = array();
+        $options = array_merge($this->auth, $opts);
+        foreach($urls as $url)
+        {
+            $options['url'] = $url;
+            $curl = self::request(json_encode($options), "https://api.kraken.io/v1/url", true);
+            curl_multi_add_handle($multi_curl, $curl);
+            $requests[$url] = $curl;
+        }
+
+        $running = null;
+        do curl_multi_exec($multi_curl, $running);
+        while ($running);
+
+        foreach($requests as $url => $handle)
+        {
+            $responses[$url] = curl_multi_getcontent($handle);
+            curl_multi_remove_handle($multi_curl, $handle);
+        }
+        curl_multi_close($multi_curl);
+
+        return $responses;
+    }
+
     public function upload($opts = array())
     {
         if (!isset($opts['file']))
@@ -79,7 +107,7 @@ class Kraken
         return $response;
     }
 
-    private function request($data, $url)
+    private function request($data, $url, $return_handle = false)
     {
         $curl = curl_init();
 
@@ -88,6 +116,9 @@ class Kraken
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         curl_setopt($curl, CURLOPT_FAILONERROR, 1);
+
+        if ($return_handle)
+            return $curl;
 
         $response = json_decode(curl_exec($curl), true);
         $error = curl_errno($curl);
