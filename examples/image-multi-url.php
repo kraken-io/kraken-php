@@ -18,7 +18,7 @@ $responses = $kraken->multi_url($urls, $params);
 
 foreach($responses as $url => $data)
 {
-    if ($response["success"]) {
+    if ($data["success"]) {
         echo "Success for image " . $url . ". Optimized image URL: ". $data["kraked_url"];
     } else {
         echo "Failed for image " . $url . ". Error message: " . $data["error"];
