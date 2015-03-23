@@ -40,7 +40,7 @@ Kraken gives you two options for fetching optimization results. With the `wait` 
 
 ### Wait option
 
-With the `wait` option turned on for every request to the API, the connection will be held open unil the image has been optimized. Once this is done you will get an immediate response with a JSON object containing your optimization results. To use this option simply set `"wait": true` in your request.
+With the `wait` option turned on for every request to the API, the connection will be held open until the image has been optimized. Once this is done you will get an immediate response with a JSON object containing your optimization results. To use this option simply set `"wait": true` in your request.
 
 **Request:**
 
@@ -140,7 +140,7 @@ $params = array(
 $data = $kraken->url($params);
 ````
 
-Depending on a choosen response option (Wait or Callback URL) in the `data` array you will find either the optimization ID or optimization results containing a `success` property, file name, original file size, kraked file size, amount of savings and optimized image URL:
+Depending on a chosen response option (Wait or Callback URL) in the `data` array you will find either the optimization ID or optimization results containing a `success` property, file name, original file size, kraked file size, amount of savings and optimized image URL:
 
 ````php
 array(6) {
@@ -216,7 +216,7 @@ $data = $kraken->upload($params);
 ````
 
 ### PNG Images
-PNG images will be converted from 24-bit to paletted 8-bit with full alpha channel. This process is called PNG quantization in RGBA format and means the amout of colours used in an image will be reduced to 256 while maintaining all information about alpha transparency.
+PNG images will be converted from 24-bit to paletted 8-bit with full alpha channel. This process is called PNG quantization in RGBA format and means the amount of colours used in an image will be reduced to 256 while maintaining all information about alpha transparency.
 
 ### JPEG Images
 For lossy JPEG optimizations Kraken will generate multiple copies of a input image with a different quality settings. It will then intelligently pick the one with the best quality to filesize ration. This ensures your JPEG image will be at the smallest size with the highest possible quality, without the need for a human to select the optimal image.
