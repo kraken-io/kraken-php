@@ -1,11 +1,11 @@
 {
     "name": "kraken-io/kraken-php",
-    "description": "Official Kraken SDK",
+    "description": "Official Kraken.io SDK",
     "license": "MIT",
     "authors": [
         {
             "name": "Kraken Image Optimizer",
-            "email": "feedback@kraken.io",
+            "email": "support@kraken.io",
             "url": "https://kraken.io"
         }
     ],
