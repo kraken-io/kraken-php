@@ -70,21 +70,63 @@ class Kraken
 
     public function status()
     {
-        $data = array('auth' => array(
-            'api_key' => $this->auth['auth']['api_key'],
-            'api_secret' => $this->auth['auth']['api_secret']
-        ));
-        $response = self::request(json_encode($data), "https://api.kraken.io/user_status");
+        $data = json_encode($this->auth);
+        
+        $response = self::request($data, "https://api.kraken.io/user_status");
 
         return $response;
     }
 
-    private function request($data, $url)
+    private function get_subaccounts() {
+        $data = json_encode($this->auth);
+        
+        $response = self::request($data, "https://api.kraken.io/v1/subaccounts", "GET");
+        
+        return $response;
+    }
+    
+    private function get_subaccount($sub_account_key = false) {
+        if ($sub_account_key === false) {
+            return false;
+        }
+        
+        $data = json_encode($this->auth);
+        
+        $response = self::request($data, "https://api.kraken.io/v1/subaccounts/" . $sub_account_key, "GET");
+        
+        return $response;
+    }
+    
+    private function create_subaccount($sub_account_name = "") {
+        if ($sub_account_key == "") {
+            return false;
+        }
+        
+        $data = json_encode(array_merge($this->auth, array("name" => $sub_account)));
+        
+        $response = self::request($data, "https://api.kraken.io/v1/subaccounts");
+        
+        return $response;
+    }
+    
+    private function delete_subaccount($sub_account_key = false) {
+        if ($sub_account_key === false) {
+            return false;
+        }
+        
+        $data = json_encode($this->auth);
+        
+        $response = self::request($data, "https://api.kraken.io/v1/subaccounts", "DELETE");
+        
+        return $response;
+    }
+
+    private function request($data, $url, $post_get_delete = "POST")
     {
         $curl = curl_init();
 
         curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $post_get_delete);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         curl_setopt($curl, CURLOPT_FAILONERROR, 1);
