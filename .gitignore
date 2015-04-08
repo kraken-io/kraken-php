@@ -1,2 +1,4 @@
 .DS_STORE
 nbproject
+/vendor/
+/composer.lock
