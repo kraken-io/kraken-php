@@ -87,6 +87,13 @@ class Kraken {
 
         $response = json_decode(curl_exec($curl), true);
 
+        if ($response === null) {
+            $response = array (
+                "success" => false,
+                "error" => 'cURL Error: ' . curl_error($curl)
+            );
+        }
+        
         curl_close($curl);
 
         return $response;
