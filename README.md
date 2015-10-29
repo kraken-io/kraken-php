@@ -22,6 +22,7 @@ With this official Kraken PHP library you can plug into the power and speed of [
   * [Amazon S3](#amazon-s3)
   * [Rackspace Cloud Files](#rackspace-cloud-files)
   * [Microsoft Azure](#microsoft-azure)
+  * [SoftLayer Object Storage](#softlayer-object-storage)
 
 ## Installation
 
@@ -319,11 +320,11 @@ In order to convert between different image types you need to add an extra `conv
 - An optional `keep_extension` property which allows you to keep the original file extension intact regardless of the output image format.
 
 **Mandatory Parameters:**
-- `format` —	The image format you wish to convert your image into. This can accept one of the following values: `jpeg`, `png` or `gif`.
+- `format` —    The image format you wish to convert your image into. This can accept one of the following values: `jpeg`, `png` or `gif`.
 
 **Optional Parameters:**
-- `background` —	Background image when converting from transparent file formats like PNG or GIF into fully opaque format like JPEG. The background property can be passed in HEX notation `"#f60"` or `"#ff6600"`, RGB `"rgb(255, 0, 0)"` or RGBA `"rgba(91, 126, 156, 0.7)"`. The default background color is white.
-- `keep_extension` —	a boolean value (`true` or `false`) instructing Kraken API whether or not the original extension should be kept in the output filename. For example when converting "image.jpg" into PNG format with this flag turned on the output image name will still be "image.jpg" even though the image has been converted into a PNG. The default value is `false` meaning the correct extension will always be set.
+- `background` —    Background image when converting from transparent file formats like PNG or GIF into fully opaque format like JPEG. The background property can be passed in HEX notation `"#f60"` or `"#ff6600"`, RGB `"rgb(255, 0, 0)"` or RGBA `"rgba(91, 126, 156, 0.7)"`. The default background color is white.
+- `keep_extension` —    a boolean value (`true` or `false`) instructing Kraken API whether or not the original extension should be kept in the output filename. For example when converting "image.jpg" into PNG format with this flag turned on the output image name will still be "image.jpg" even though the image has been converted into a PNG. The default value is `false` meaning the correct extension will always be set.
 
 
 ## Preserving Metadata
@@ -484,7 +485,74 @@ $params = array(
 
 $data = $kraken->upload($params);
 ````
+### SoftLayer Object Storage
 
+**Mandatory Parameters:**
+- `user` - Your SoftLayer username.
+- `key` - Your SoftLayer API Key.
+- `container` - Name of a destination container on your SoftLayer account.
+- `region` - Short name of the region your container is located in. This can be one of the following: 
+`syd01` `lon02` `mon01` `dal05` `tok02`
+`tor01` `hkg02` `mex01` `par01` `fra02`
+`mil01` `sjc01` `sng01` `mel01` `ams01`
+
+**Optional Parameters:**
+- `path` - Destination path in your container (e.g. "images/layout/header.jpg"). Defaults to root "/".
+- `cdn_url` - A boolean value `true` or `false` instructing Kraken API to return a public CDN URL of your optimized file. Defaults to `false` meaning the non-CDN URL will be returned.
+
+The above parameters must be passed in a `sl_store` object:
+
+````php
+<?php
+
+require_once("Kraken.php");
+
+$kraken = new Kraken("your-api-key", "your-api-secret");
+
+// Minimal request, providing only the mandatory parameters */
+$params = array(
+    "file" => "/path/to/image/file.jpg",
+    "wait" => true,
+    "sl_store" => array(
+        "user" => "your-softlayer-account",
+        "key" => "your-softlayer-key",
+        "container" => "destination-container",
+        "region" => "your-container-location"
+    )
+);
+
+/*
+Below you can find an example of a complete JSON request that uses sl_store to push optimized image into your SoftLayer Object Storage container. We will use url option to feed the API with a URL of image to be optimized.
+*/
+
+$params = array(
+    "url" => "http://awesome-website.com/images/header.jpg",
+    "wait" => true,
+    "sl_store" => array(
+        "user" => "your-softlayer-account",
+        "key" => "your-softlayer-key",
+        "container" => "destination-container",
+        "region" => "your-container-location",
+        "cdn_url": true,
+        "path": "images/layout/header.jpg"
+    )
+);
+
+
+$data = $kraken->upload($params);
+````
+
+If your SoftLayer container is CDN-enabled and you've passed `"cdn_url": true` parameter in your JSON request the optimization results will contain `kraked_url` which points directly to the optimized file location in your SoftLayer CDN, for example:
+
+````php
+kraked_url => "http://1c231.http.fra02.cdn.softlayer.net/images/layout/header.jpg"
+````
+
+If your container is not CDN-enabled `kraked_url` will point to the optimized image URL in the Kraken API:
+
+````php
+kraked_url => "http://dl.kraken.io/api/ecdfa5c55d5668b1b5fe9e420554c4ee/header.jpg"
+````
 
 ## LICENSE - MIT
 
