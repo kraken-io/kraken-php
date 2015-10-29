@@ -365,7 +365,7 @@ $data = $kraken->upload($params);
 
 ## External Storage
 
-Kraken API allows you to store optimized images directly in your S3 bucket, Cloud Files or Azure container. With just a few additional parameters your optimized images will be pushed to your external storage in no time.
+Kraken API allows you to store optimized images directly in your S3 bucket, Cloud Files container, Azure container or SoftLayer Object Storage container. With just a few additional parameters your optimized images will be pushed to your external storage in no time.
 
 ### Amazon S3
 
