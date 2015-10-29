@@ -506,7 +506,6 @@ The above parameters must be passed in a `sl_store` object:
 <?php
 
 require_once("Kraken.php");
-
 $kraken = new Kraken("your-api-key", "your-api-secret");
 
 // Minimal request, providing only the mandatory parameters */
@@ -521,9 +520,15 @@ $params = array(
     )
 );
 
-/*
-Below you can find an example of a complete JSON request that uses sl_store to push optimized image into your SoftLayer Object Storage container. We will use url option to feed the API with a URL of image to be optimized.
-*/
+$data = $kraken->upload($params);
+````
+Below you can find an example of a complete JSON request that uses `sl_store` to push optimized image into your SoftLayer Object Storage container. We will use url option to feed the API with a URL of image to be optimized:
+
+````php
+<?php
+
+require_once("Kraken.php");
+$kraken = new Kraken("your-api-key", "your-api-secret");
 
 $params = array(
     "url" => "http://awesome-website.com/images/header.jpg",
@@ -537,7 +542,6 @@ $params = array(
         "path": "images/layout/header.jpg"
     )
 );
-
 
 $data = $kraken->upload($params);
 ````
