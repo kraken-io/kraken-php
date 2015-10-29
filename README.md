@@ -538,8 +538,8 @@ $params = array(
         "key" => "your-softlayer-key",
         "container" => "destination-container",
         "region" => "your-container-location",
-        "cdn_url": true,
-        "path": "images/layout/header.jpg"
+        "cdn_url" => true,
+        "path" => "images/layout/header.jpg"
     )
 );
 
