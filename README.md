@@ -28,12 +28,12 @@ With this official Kraken PHP library you can plug into the power and speed of [
 
 ### Composer
 
-If you're using [Composer](http://getcomposer.org/), you can simply add a dependency on `kraken-io/kraken-php` to your project's `composer.json` file. Here's an example of a dependency on version 1.1:
+If you're using [Composer](http://getcomposer.org/), you can simply add a dependency on `kraken-io/kraken-php` to your project's `composer.json` file. Here's an example of a dependency on version 1.2:
 
 ```json
 {
     "require": {
-        "kraken-io/kraken-php": "^1.1"
+        "kraken-io/kraken-php": "^1.2"
     }
 }
 ```
