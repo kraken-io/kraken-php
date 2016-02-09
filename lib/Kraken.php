@@ -80,13 +80,14 @@ class Kraken {
         }
 
         curl_setopt($curl, CURLOPT_URL, $url);
-        
+
         // Force continue-100 from server
         curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.85 Safari/537.36");
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         curl_setopt($curl, CURLOPT_FAILONERROR, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 
         $response = json_decode(curl_exec($curl), true);
 
@@ -96,7 +97,7 @@ class Kraken {
                 "error" => 'cURL Error: ' . curl_error($curl)
             );
         }
-        
+
         curl_close($curl);
 
         return $response;
