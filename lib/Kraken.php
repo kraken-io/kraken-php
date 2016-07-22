@@ -4,7 +4,7 @@ class Kraken {
     protected $auth = array();
     private $timeout;
 
-    public function __construct($key = '', $secret = '', $timeout = 0) {
+    public function __construct($key = '', $secret = '', $timeout = 30) {
         $this->auth = array(
             "auth" => array(
                 "api_key" => $key,
