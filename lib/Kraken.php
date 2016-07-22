@@ -2,14 +2,16 @@
 
 class Kraken {
     protected $auth = array();
+    private $timeout;
 
-    public function __construct($key = '', $secret = '') {
+    public function __construct($key = '', $secret = '', $timeout = 30) {
         $this->auth = array(
             "auth" => array(
                 "api_key" => $key,
                 "api_secret" => $secret
             )
         );
+        $this->timeout = $timeout;
     }
 
     public function url($opts = array()) {
@@ -89,6 +91,7 @@ class Kraken {
         curl_setopt($curl, CURLOPT_FAILONERROR, 0);
         curl_setopt($curl, CURLOPT_CAINFO, __DIR__ . "/cacert.pem");
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($curl, CURLOPT_TIMEOUT, $this->timeout);
 
         $response = json_decode(curl_exec($curl), true);
 
