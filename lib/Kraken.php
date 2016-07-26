@@ -95,7 +95,7 @@ class Kraken {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
         curl_setopt($curl, CURLOPT_TIMEOUT, $this->timeout);
 
-        if (!empty($this->proxyParams)) {
+        if (isset($this->proxyParams['proxy'])) {
             curl_setopt($curl, CURLOPT_PROXY, $this->proxyParams['proxy']);
         }
 
