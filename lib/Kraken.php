@@ -31,13 +31,6 @@ class Kraken {
             );
         }
 
-        if (preg_match("/\/\//i", $opts['file'])) {
-            $opts['url'] = $opts['file'];
-            unset($opts['file']);
-
-            return $this->url($opts);
-        }
-
         if (!file_exists($opts['file'])) {
             return array(
                 "success" => false,
