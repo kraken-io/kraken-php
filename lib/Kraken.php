@@ -90,6 +90,13 @@ class Kraken {
 
         if (isset($this->proxyParams['proxy'])) {
             curl_setopt($curl, CURLOPT_PROXY, $this->proxyParams['proxy']);
+
+            if (isset($this->proxyParams['port'])) {
+                curl_setopt($curl, CURLOPT_PROXYPORT, $this->proxyParams['port']);
+            }
+            if (isset($this->proxyParams['type'])) {
+                curl_setopt($curl, CURLOPT_PROXYTYPE, $this->proxyParams['type']);
+            }
         }
 
         $response = json_decode(curl_exec($curl), true);
