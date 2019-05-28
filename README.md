@@ -113,7 +113,7 @@ With the `wait` option turned on for every request to the API, the connection wi
 
 With the Callback URL the HTTPS connection will be terminated immediately and a unique `id` will be returned in the response body. After the optimization is over Kraken will POST a message to the `callback_url` specified in your request. The ID in the response will reflect the ID in the results posted to your Callback URL.
 
-We recommend [requestb.in](http://requestb.in) as an easy way to capture optimization results for initial testing.
+We recommend [RequestBin](https://requestbin.com/) as an easy way to capture optimization results for initial testing.
 
 **Request:**
 
@@ -491,7 +491,7 @@ $data = $kraken->upload($params);
 - `user` - Your SoftLayer username.
 - `key` - Your SoftLayer API Key.
 - `container` - Name of a destination container on your SoftLayer account.
-- `region` - Short name of the region your container is located in. This can be one of the following: 
+- `region` - Short name of the region your container is located in. This can be one of the following:
 `syd01` `lon02` `mon01` `dal05` `tok02`
 `tor01` `hkg02` `mex01` `par01` `fra02`
 `mil01` `sjc01` `sng01` `mel01` `ams01`
