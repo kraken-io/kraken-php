@@ -1,7 +1,7 @@
-PHP library for Kraken.io API
+PHP library for Kraken.io Image Optimizer API
 ==========
 
-With this official Kraken PHP library you can plug into the power and speed of [Kraken.io](http://kraken.io/) Image Optimizer.
+This is the official Kraken.io PHP library, which should help users very quickly integrate our Image Optimization into their PHP projects. [Kraken.io](http://kraken.io/) Image Optimizer.
 
 * [Installation](#installation)
 * [Getting Started](#getting-started)
@@ -63,7 +63,7 @@ https://github.com/kraken-io/kraken-php/archive/master.zip
 
 ## Getting Started
 
-First you need to sign up for the [Kraken API](http://kraken.io/plans/) and obtain your unique **API Key** and **API Secret**. You will find both under [API Credentials](http://kraken.io/account/api-credentials). Once you have set up your account, you can start using Kraken API in your applications.
+First you need to sign up for the [Kraken.io API](http://kraken.io/plans/) and obtain your unique **API Key** and **API Secret**. You will find both under [API Credentials](http://kraken.io/account/api-credentials). Once you have set up your account, you can start using Kraken.io API in your applications.
 
 ## Downloading Images
 
@@ -71,13 +71,13 @@ Remember - never link to optimized images offered to download. You have to downl
 
 ## How to use
 
-You can optimize your images in two ways - by providing an URL of the image you want to optimize or by uploading an image file directly to Kraken API.
+You can optimize your images in two ways - by providing an URL of the image you want to optimize or by uploading an image file directly to Kraken.io API.
 
 The first option (image URL) is great for images that are already in production or any other place on the Internet. The second one (direct upload) is ideal for your deployment process, build script or the on-the-fly processing of your user's uploads where you don't have the images available online yet.
 
 ## Wait and Callback URL
 
-Kraken gives you two options for fetching optimization results. With the `wait` option set the results will be returned immediately in the response. With the `callback_url` option set the results will be posted to the URL specified in your request.
+Kraken.io gives you two options for fetching optimization results. With the `wait` option set the results will be returned immediately in the response. With the `callback_url` option set the results will be posted to the URL specified in your request.
 
 ### Wait option
 
@@ -111,7 +111,7 @@ With the `wait` option turned on for every request to the API, the connection wi
 
 ### Callback URL
 
-With the Callback URL the HTTPS connection will be terminated immediately and a unique `id` will be returned in the response body. After the optimization is over Kraken will POST a message to the `callback_url` specified in your request. The ID in the response will reflect the ID in the results posted to your Callback URL.
+With the Callback URL the HTTPS connection will be terminated immediately and a unique `id` will be returned in the response body. After the optimization is over Kraken.io will POST a message to the `callback_url` specified in your request. The ID in the response will reflect the ID in the results posted to your Callback URL.
 
 We recommend [RequestBin](https://requestbin.com/) as an easy way to capture optimization results for initial testing.
 
@@ -152,7 +152,7 @@ We recommend [RequestBin](https://requestbin.com/) as an easy way to capture opt
 
 ## Authentication
 
-The first step is to authenticate to Kraken API by providing your unique API Key and API Secret while creating a new Kraken instance:
+The first step is to authenticate to Kraken.io API by providing your unique API Key and API Secret while creating a new Kraken.io instance:
 
 ````php
 <?php
@@ -202,7 +202,7 @@ array(6) {
 
 ## Usage - Image Upload
 
-If you want to upload your images directly to Kraken API use the `kraken->upload()` method. You will need to provide two mandatory parameters in an array - `file` which is the absolute path to the file and `wait` or `callback_url`.
+If you want to upload your images directly to Kraken.io API use the `kraken->upload()` method. You will need to provide two mandatory parameters in an array - `file` which is the absolute path to the file and `wait` or `callback_url`.
 
 In the `$data` array you will find the same optimization properties as with the `url` option above.
 
@@ -247,11 +247,11 @@ $data = $kraken->upload($params);
 PNG images will be converted from 24-bit to paletted 8-bit with full alpha channel. This process is called PNG quantization in RGBA format and means the amount of colours used in an image will be reduced to 256 while maintaining all information about alpha transparency.
 
 #### JPEG Images
-For lossy JPEG optimizations Kraken will generate multiple copies of a input image with a different quality settings. It will then intelligently pick the one with the best quality to filesize ration. This ensures your JPEG image will be at the smallest size with the highest possible quality, without the need for a human to select the optimal image.
+For lossy JPEG optimizations Kraken.io will generate multiple copies of a input image with a different quality settings. It will then intelligently pick the one with the best quality to filesize ration. This ensures your JPEG image will be at the smallest size with the highest possible quality, without the need for a human to select the optimal image.
 
 ## Image Resizing
 
-Image resizing option is great for creating thumbnails or preview images in your applications. Kraken will first resize the given image and then optimize it with its vast array of optimization algorithms. The `resize` option needs a few parameters to be passed like desired `width` and/or `height` and a mandatory `strategy` property. For example:
+Image resizing option is great for creating thumbnails or preview images in your applications. Kraken.io will first resize the given image and then optimize it with its vast array of optimization algorithms. The `resize` option needs a few parameters to be passed like desired `width` and/or `height` and a mandatory `strategy` property. For example:
 
 ````php
 <?php
@@ -284,7 +284,7 @@ The `strategy` property can have one of the following values:
 - `crop` - This option will crop your image to the exact size you specify with no distortion.
 - `fill` - This strategy allows you to resize the image to fit the specified bounds while preserving the aspect ratio (just like auto strategy). The optional background property allows you to specify a color which will be used to fill the unused portions of the previously specified bounds. The background property can be formatted in HEX notation `#f60` or `#ff6600`, RGB `rgb(255, 0, 0)` or RGBA `rgba(91, 126, 156, 0.7)`. The default background color is white.
 
-**More information about image resizing and cropping can be found in the [Kraken API Reference](https://kraken.io/docs/image-resizing)**
+**More information about image resizing and cropping can be found in the [Kraken.io API Reference](https://kraken.io/docs/image-resizing)**
 
 ## WebP Compression
 
@@ -311,7 +311,7 @@ $data = $kraken->upload($params);
 
 ## Image Type Conversion
 
-Kraken API allows you to easily convert different images from one type/format to another. If, for example, you would like to turn you transparent PNG file into a JPEG with a grey background Kraken API has you covered.
+Kraken.io API allows you to easily convert different images from one type/format to another. If, for example, you would like to turn you transparent PNG file into a JPEG with a grey background Kraken.io API has you covered.
 
 In order to convert between different image types you need to add an extra `convert` object to you request JSON. This object takes three properties:
 
@@ -324,12 +324,12 @@ In order to convert between different image types you need to add an extra `conv
 
 **Optional Parameters:**
 - `background` —    Background image when converting from transparent file formats like PNG or GIF into fully opaque format like JPEG. The background property can be passed in HEX notation `"#f60"` or `"#ff6600"`, RGB `"rgb(255, 0, 0)"` or RGBA `"rgba(91, 126, 156, 0.7)"`. The default background color is white.
-- `keep_extension` —    a boolean value (`true` or `false`) instructing Kraken API whether or not the original extension should be kept in the output filename. For example when converting "image.jpg" into PNG format with this flag turned on the output image name will still be "image.jpg" even though the image has been converted into a PNG. The default value is `false` meaning the correct extension will always be set.
+- `keep_extension` —    a boolean value (`true` or `false`) instructing Kraken.io API whether or not the original extension should be kept in the output filename. For example when converting "image.jpg" into PNG format with this flag turned on the output image name will still be "image.jpg" even though the image has been converted into a PNG. The default value is `false` meaning the correct extension will always be set.
 
 
 ## Preserving Metadata
 
-By default Kraken API will **strip all the metadata found in an image** to make the image file as small as it is possible, and in both lossy and lossless modes. Entries like EXIF, XMP and IPTC tags, colour profile information, etc. will be stripped altogether.
+By default Kraken.io API will **strip all the metadata found in an image** to make the image file as small as it is possible, and in both lossy and lossless modes. Entries like EXIF, XMP and IPTC tags, colour profile information, etc. will be stripped altogether.
 
 However there are situations when you might want to preserve some of the meta information contained in the image, for example, copyright notice or geotags. In order to preserve the most important meta entries add an additional `preserve_meta` array to your request with one or more of the following values:
 
@@ -365,7 +365,7 @@ $data = $kraken->upload($params);
 
 ## External Storage
 
-Kraken API allows you to store optimized images directly in your S3 bucket, Cloud Files container, Azure container or SoftLayer Object Storage container. With just a few additional parameters your optimized images will be pushed to your external storage in no time.
+Kraken.io API allows you to store optimized images directly in your S3 bucket, Cloud Files container, Azure container or SoftLayer Object Storage container. With just a few additional parameters your optimized images will be pushed to your external storage in no time.
 
 ### Amazon S3
 
@@ -416,7 +416,7 @@ The `$data` array will contain a `kraked_url` key pointing directly to the optim
 
 **Optional Parameters:**
 - `path` - Destination path in your container (e.g. `"images/layout/header.jpg"`). Defaults to root `"/"`.
-- `ssl` - a boolean value (`true` or `false`) instructing Kraken API to fetch either SSL or non-SSL URL from Rackspace CloudFiles. Defaults to `false` meaning the non-SSL URL will be returned.
+- `ssl` - a boolean value (`true` or `false`) instructing Kraken.io API to fetch either SSL or non-SSL URL from Rackspace CloudFiles. Defaults to `false` meaning the non-SSL URL will be returned.
 
 The above parameters must be passed in a `cf_store` key:
 
@@ -447,7 +447,7 @@ If your container is CDN-enabled, the optimization results will contain `kraked_
 kraked_url => "http://e9ffc04970a269a54eeb-cc00fdd2d4f11dffd931005c9e8de53a.r2.cf1.rackcdn.com/path/to/file.jpg"
 ````
 
-If your container is not CDN-enabled optimized file will be stored in your CloudFiles account anyways but the `kraked_url` will point to the optimized image URL in the Kraken API Storage:
+If your container is not CDN-enabled optimized file will be stored in your CloudFiles account anyways but the `kraked_url` will point to the optimized image URL in the Kraken.io API Storage:
 
 ````php
 kraked_url => "http://dl.kraken.io/ecdfa5c55d5668b1b5fe9e420554c4ee/file.jpg"
@@ -498,7 +498,7 @@ $data = $kraken->upload($params);
 
 **Optional Parameters:**
 - `path` - Destination path in your container (e.g. "images/layout/header.jpg"). Defaults to root "/".
-- `cdn_url` - A boolean value `true` or `false` instructing Kraken API to return a public CDN URL of your optimized file. Defaults to `false` meaning the non-CDN URL will be returned.
+- `cdn_url` - A boolean value `true` or `false` instructing Kraken.io API to return a public CDN URL of your optimized file. Defaults to `false` meaning the non-CDN URL will be returned.
 
 The above parameters must be passed in a `sl_store` object:
 
@@ -552,7 +552,7 @@ If your SoftLayer container is CDN-enabled and you've passed `"cdn_url": true` p
 kraked_url => "http://1c231.http.fra02.cdn.softlayer.net/images/layout/header.jpg"
 ````
 
-If your container is not CDN-enabled `kraked_url` will point to the optimized image URL in the Kraken API:
+If your container is not CDN-enabled `kraked_url` will point to the optimized image URL in the Kraken.io API:
 
 ````php
 kraked_url => "http://dl.kraken.io/api/ecdfa5c55d5668b1b5fe9e420554c4ee/header.jpg"
