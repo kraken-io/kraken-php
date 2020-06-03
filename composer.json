@@ -1,6 +1,6 @@
 {
     "name": "kraken-io/kraken-php",
-    "description": "Official Kraken.io SDK",
+    "description": "Custom Official Kraken.io SDK",
     "homepage": "https://kraken.io",
     "license": "MIT",
     "authors": [
