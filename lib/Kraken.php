@@ -31,6 +31,13 @@ class Kraken {
             );
         }
 
+        if (filter_var($opts['file'], FILTER_VALIDATE_URL)) {
+            $opts['url'] = $opts['file'];
+            unset($opts['file']);
+
+            return $this->url($opts);
+        }
+
         if (!file_exists($opts['file'])) {
             return array(
                 "success" => false,
